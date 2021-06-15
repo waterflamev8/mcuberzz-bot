@@ -1,4 +1,6 @@
 import logging
+import sys
+import traceback
 
 from discord.ext.commands import AutoShardedBot
 
