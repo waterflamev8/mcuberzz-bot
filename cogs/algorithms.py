@@ -14,12 +14,12 @@ class Algorithms(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self._triggers = {
-            "sexy": "R U R' U'",
             "unsexy": "U R U' R'",
-            "sledge": "R' F R F'",
+            "sexy": "R U R' U'",
             "sledgehammer": "R' F R F'",
-            "hedge": "F R' F' R",
+            "sledge": "R' F R F'",
             "hedgeslammer": "F R' F' R",
+            "hedge": "F R' F' R",
         }
 
     @cog_ext.cog_slash(
