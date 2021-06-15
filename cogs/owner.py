@@ -22,6 +22,21 @@ class Owner(commands.Cog):
 
     @checks.is_owner()
     @commands.command()
+    async def reload(self, ctx, *, cog: str):
+        try:
+            self.bot.unload_extension("cogs." + cog)
+            self.bot.load_extension("cogs." + cog)
+            
+            await ctx.send(
+                embed=Embed(
+                    description="Successfully loaded the module.", colour=self.bot.primary_colour
+                )
+            )
+        except Exception as e:
+            await ctx.send(embed=Embed(description=f"Error: {e}", colour=self.bot.error_colour))
+
+    @checks.is_owner()
+    @commands.command()
     async def _eval(self, ctx, *, body: str):
         env = {
             "bot": self.bot,
