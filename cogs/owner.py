@@ -21,17 +21,14 @@ class Owner(commands.Cog):
         self.bot = bot
 
     @checks.is_admin()
-    @commands.command(description="Make me say something.", usage="[channel] <message>")
+    @commands.command()
     async def echo(self, ctx, channel: Optional[TextChannel], *, content: str):
         channel = channel or ctx.channel
         await ctx.message.delete()
         await channel.send(content, allowed_mentions=AllowedMentions(everyone=False))
 
     @checks.is_admin()
-    @commands.command(
-        description="Make me say something through an embed.",
-        usage="[channel] <message>",
-    )
+    @commands.command()
     async def embed(self, ctx, channel: Optional[TextChannel], *, content: str):
         channel = channel or ctx.channel
         await ctx.message.delete()
@@ -41,7 +38,7 @@ class Owner(commands.Cog):
         )
 
     @checks.is_owner()
-    @commands.command(name="eval", description="Evaluate code.", usage="<code>")
+    @commands.command()
     async def _eval(self, ctx, *, body: str):
         env = {
             "bot": self.bot,
@@ -103,7 +100,7 @@ class Owner(commands.Cog):
             )
 
     @checks.is_owner()
-    @commands.command(description="Execute code in bash.", usage="bash <command>")
+    @commands.command()
     async def bash(self, ctx, *, command: str):
         try:
             output = subprocess.check_output(command.split(), stderr=subprocess.STDOUT).decode(
@@ -121,10 +118,7 @@ class Owner(commands.Cog):
             )
 
     @checks.is_owner()
-    @commands.command(
-        description="Invoke the command as another user and optionally in another channel.",
-        usage="invoke [channel] <member> <command>",
-    )
+    @commands.command()
     async def invoke(
         self,
         ctx,
