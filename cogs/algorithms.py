@@ -13,6 +13,14 @@ log = logging.getLogger(__name__)
 class Algorithms(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self._triggers = {
+            "sexy": "R U R' U'",
+            "unsexy": "U R U' R'",
+            "sledge": "R' F R F'",
+            "sledgehammer": "R' F R F'",
+            "hedge": "F R' F' R",
+            "hedgeslammer": "F R' F' R",
+        }
 
     @cog_ext.cog_slash(
         name="alg",
@@ -39,6 +47,9 @@ class Algorithms(commands.Cog):
     )
     async def alg(self, ctx, view, algorithm):
         await ctx.defer()  # visualcube sometimes takes too long
+
+        for name, trigger in self._triggers.items():
+            algorithm = algorithm.replace(name, trigger)
 
         safe_alg = quote(algorithm, safe="")
         embed = Embed(
