@@ -16,7 +16,7 @@ class Bot(AutoShardedBot):
         self.config = config
         self.redis = None
 
-        self._cogs = ["algorithms", "events", "owner", "scrambles"]
+        self._cogs = ["admin", "algorithms", "events", "owner", "scrambles"]
 
     @property
     def primary_colour(self):
