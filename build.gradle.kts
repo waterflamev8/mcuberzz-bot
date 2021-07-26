@@ -9,6 +9,7 @@ val tnoodleVersion: String by project
 
 plugins {
     kotlin("jvm") version "1.5.20"
+    application
 }
 
 group = "com.mcuberzz"
@@ -35,4 +36,8 @@ tasks.withType<KotlinCompile>() {
         jvmTarget = "11"
         freeCompilerArgs = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
     }
+}
+
+application {
+    mainClass.set("com.mcuberzz.bot.MainKt")
 }
